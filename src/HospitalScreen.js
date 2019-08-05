@@ -13,25 +13,118 @@ class HospitalScreen extends Component {
             isHospitalView: false,
             selectedHospital: {},
             hospitalList: [
-                { name: "Hospital1", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital2", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital3", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital4", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital5", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital6", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital7", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital8", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital9", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital10", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital11", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital12", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital13", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital14", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital15", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital16", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital17", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital18", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
-                { name: "Hospital19", city: "Mandalay", phones: ["0944335564", "0969847363", "0134343"], uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw" },
+                {
+                    name: "Mandalay General Hospital",
+                    city: "Mandalay",
+                    phones: ["0221041",],
+                    address: "30 Street, between 74 and 77 Streets in Chanayethazan Township",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Mandalay Children Hospital",
+                    city: "Mandalay",
+                    phones: ["0224917"],
+                    address: "Corner of 30 and 74 streets",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "City Hospital",
+                    city: "Mandalay",
+                    phones: ["09797008700"],
+                    address: "Theikpan Street,between 65 and 66 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Pun Hlaing Siloam Hospital",
+                    city: "Mandalay",
+                    phones: ["09952207"],
+                    address: "No.97, 73 Street,Between 31 and 32 Streets ,Chan Aye Tharzan Township,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Myat Thukha Hospital",
+                    city: "Mandalay",
+                    phones: ["09976636226"],
+                    address: "30 Street,Between 70 and 71 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Mandalar Hospital",
+                    city: "Mandalay",
+                    phones: ["09423343640"],
+                    address: "33 Street,Between 68 and 69 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Nyein Hospital",
+                    city: "Mandalay",
+                    phones: ["024065460"],
+                    address: "82 Street,Between 29 and 30 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Grand Mandalay Hospital",
+                    city: "Mandalay",
+                    phones: ["09404090701"],
+                    address: "Corner of 30 and 74 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Royal Hospital",
+                    city: "Mandalay",
+                    phones: ["024033258"],
+                    address: "31 Street,Between 69 and 70 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "300 Bedded Teaching",
+                    city: "Mandalay",
+                    phones: ["0280959"],
+                    address: "31 Street,Between Thazin and Ngu War streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Thit Sar Yarzar Hospital",
+                    city: "Mandalay",
+                    phones: ["0233423"],
+                    address: "29 Street,Between 76 and 77 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Ingyin Phyu Specialist Hospital",
+                    city: "Mandalay",
+                    phones: ["024072289"],
+                    address: "30 Street,Between 63 and 64 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Aye Thiri Hospital",
+                    city: "Mandalay",
+                    phones: ["0232764"],
+                    address: "26 Street,Between 72 and 73 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Pan Hlaing Hospital",
+                    city: "Mandalay",
+                    phones: ["0924069203"],
+                    address: "No.97 , 73 Street,Between 31 and 32 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Royal Rose Hospital",
+                    city: "Mandalay",
+                    phones: ["024069487"],
+                    address: "No.2 ,Between 76 and 77 streets,Between 31 and 32 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
+                {
+                    name: "Chan Nyein Aung Hospital",
+                    city: "Mandalay",
+                    phones: ["09779991732"],
+                    address: "74 Street,Between 27 and 28 streets,Mandalay",
+                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                },
             ]
         }
     }
@@ -68,20 +161,26 @@ class HospitalScreen extends Component {
                             <Text style={{ paddingHorizontal: 16, fontSize: 20, color: Color.bodyBackground, fontWeight: "bold" }}>{selectedHospital.name}</Text>
                         </View>
                     </View>
-                    
-                    <TouchableNativeFeedback onPress={()=>null}>
-                        <View style={{ padding: 16, paddingRight: 24, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
-                            <Text style={{ fontSize: 16, color: Color.bodyText }}>{selectedHospital.city}</Text>
-                            <View style={{ justifyContent: "center", alignItems: "center", width: 32, height: 32, borderColor: Color.listDivider, borderWidth: 1, borderRadius: 16, }}>
-                                <Icon name="map-marker-alt" color={Color.tabTextSelected} size={20} />
+
+                    <TouchableNativeFeedback onPress={() => null}>
+                        <View>
+                            <View style={{ padding: 16, paddingBottom: 8, paddingRight: 24, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+                                <Text style={{ fontSize: 16, color: Color.bodyText }}>{selectedHospital.city}</Text>
+                                <View style={{ justifyContent: "center", alignItems: "center", width: 32, height: 32, borderColor: Color.listDivider, borderWidth: 1, borderRadius: 16, }}>
+                                    <Icon name="map-marker-alt" color={Color.tabTextSelected} size={20} />
+                                </View>
+                            </View>
+                            <View style={{ paddingHorizontal: 16, paddingVertical: 8}}>
+                                <View style={styles.divider} />
+                                <Text style={{ paddingTop: 8, fontSize: 13, color: Color.bodyTextSecondary }}>{selectedHospital.address}</Text>
                             </View>
                         </View>
                     </TouchableNativeFeedback>
                     <View style={styles.divider} />
-                    
+
                     {selectedHospital.phones.map((phone, k) => (
                         <View key={k}>
-                            <TouchableNativeFeedback onPress={()=>null}>
+                            <TouchableNativeFeedback onPress={() => null} >
                                 <View style={{ padding: 16, paddingRight: 24, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                                     <Text style={{ fontSize: 16, color: Color.bodyText }}>{phone}</Text>
                                     <View style={{ justifyContent: "center", alignItems: "center", width: 32, height: 32, borderColor: Color.listDivider, borderWidth: 1, borderRadius: 16, }}>

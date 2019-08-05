@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Switch, TouchableNativeFeedback, TextInput } from 'react-native'
+import { View, Text, ScrollView, Switch, TouchableNativeFeedback, TextInput, CheckBox } from 'react-native'
 import Icon from "react-native-vector-icons/dist/FontAwesome5"
 import styles from "./styles"
 import * as Color from "./config.colors"
@@ -130,7 +130,7 @@ class ExpertScreen extends Component {
                             <Text style={{ flex: 8, fontSize: 16, color: Color.bodyText }}>{symptom.name}?</Text>
                             {
                                 symptom.type === "boolean"
-                                    ? <Switch style={{ paddingHorizontal: 8, flex: 1 }} onValueChange={value => this.onInputChanged(value, i, symptom.type)} value={symptom.value} />
+                                    ? <CheckBox style={{ paddingHorizontal: 8, flex: 1 }} onValueChange={value => this.onInputChanged(value, i, symptom.type)} value={symptom.value} />
                                     : symptom.type === "integer"
                                         ? <TextInput returnKeyType="done" keyboardType="number-pad" onChangeText={value => this.onInputChanged(value, i, symptom.type)} value={symptom.value.toString()} style={{ flex:1, height: 32, paddingVertical: 2, paddingHorizontal: 16, borderWidth: 1, borderColor: Color.inputBorder }} />
                                         : null  

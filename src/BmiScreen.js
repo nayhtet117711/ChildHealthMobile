@@ -6,6 +6,8 @@ import * as Color from "./config.colors"
 class BmiScreen extends Component {
 
     render() {
+        console.disableYellowBox = true;
+        
         return(
             <View style={styles.body}>
                 <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>

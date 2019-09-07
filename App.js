@@ -1,9 +1,14 @@
 import React from "react";
-import { createAppContainer, createBottomTabNavigator } from "react-navigation";
+import { createAppContainer, createBottomTabNavigator, createStackNavigator, createSwitchNavigator } from "react-navigation";
 import Icon from 'react-native-vector-icons/dist/FontAwesome5';
 import HospitalScreen from "./src/HospitalScreen"
 import ExpertScreen from "./src/ExpertScreen"
 import BmiScreen from "./src/BmiScreen"
+import AccountScreen from "./src/AccountScreen"
+import LoginScreen from "./src/LoginScreen"
+import SignupScreen from "./src/SignupScreen"
+import AuthLoadingScreen from "./src/AuthLoadingScreen"
+
 import * as Color from "./src/config.colors"
 
 const TabScreens = createBottomTabNavigator(
@@ -26,15 +31,22 @@ const TabScreens = createBottomTabNavigator(
         title: "Expert",
       }),
     },
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: "Me",
+      }),
+    },
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, horizontal, tintColor }) => {
         const { routeName } = navigation.state;
-        const iconName = routeName==="Hospital" ? "clinic-medical" 
-          : routeName==="Bmi" ? "calculator"
-          : routeName==="Expert" ? "user-md"
-          : "question-circle"
+        const iconName = routeName === "Hospital" ? "clinic-medical"
+          : routeName === "Bmi" ? "calculator"
+            : routeName === "Expert" ? "user-md"
+              : routeName === "Account" ? "user"
+                : "question-circle"
         return <Icon name={iconName} size={24} color={tintColor} />
       },
     }),
@@ -52,6 +64,26 @@ const TabScreens = createBottomTabNavigator(
   }
 );
 
-const App = createAppContainer(TabScreens)
+const AuthStack = createStackNavigator(
+  {
+    Login: LoginScreen,
+    Signup: SignupScreen
+  },
+  {
+    headerMode: 'none'
+  }
+)
+
+const App = createAppContainer(
+  createSwitchNavigator(
+    {
+      AuthLoading: AuthLoadingScreen,
+      App: TabScreens,
+      Auth: AuthStack
+    },
+    {
+      initialRouteName: 'AuthLoading'
+    }
+  ))
 
 export default App;

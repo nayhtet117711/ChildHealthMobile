@@ -154,7 +154,7 @@ class HospitalScreen extends Component {
             <View style={styles.body}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                     <View style={{ borderBottomColor: Color.listDivider, borderBottomWidth: 1 }}>
-                        <Image resizeMode="cover" style={{ width: "100%", height: 200 }} source={{ uri: selectedHospital.uri }} />
+                        <Image resizeMode="cover" style={{ width: "100%", height: 300 }} source={{ uri: selectedHospital.uri }} />
                         <View style={{ position: "absolute", top: 0, bottom: 0, left: 0, right: 0, backgroundColor: "#247554dd" }} />
                         <View style={{ position: "absolute", bottom: 10, left: 10, flexDirection: "row", alignItems: "center" }}>
                             <Avatar rounded size="medium" source={{ uri: selectedHospital.uri }} />
@@ -170,7 +170,7 @@ class HospitalScreen extends Component {
                                     <Icon name="map-marker-alt" color={Color.tabTextSelected} size={20} />
                                 </View>
                             </View>
-                            <View style={{ paddingHorizontal: 16, paddingVertical: 8}}>
+                            <View style={{ paddingHorizontal: 16, paddingVertical: 12}}>
                                 <View style={styles.divider} />
                                 <Text style={{ paddingTop: 8, fontSize: 13, color: Color.bodyTextSecondary }}>{selectedHospital.address}</Text>
                             </View>

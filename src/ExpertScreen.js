@@ -1,10 +1,11 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Switch, TouchableNativeFeedback, TextInput, CheckBox } from 'react-native'
+import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker } from 'react-native'
 import Icon from "react-native-vector-icons/dist/FontAwesome5"
+import Dialog from "react-native-dialog";
 import styles from "./styles"
 import * as Color from "./config.colors"
 import { fetchSymptomList, fetchExpertSystem } from "./api"
-import { throwStatement } from "@babel/types";
+
 class ExpertScreen extends Component {
 
     constructor(props) {
@@ -14,20 +15,14 @@ class ExpertScreen extends Component {
             symptomList: [],
             symptomListPaged: [],
             currentPage: 0,
-            expertResult: {}
+            expertResult: {},
+            childAge: "1_to_28_days",
+            childAgeAdded: false
         }
     }
 
     componentDidMount() {
-        fetchSymptomList((error, data) => {
-            if (error) alert(error)
-            else if (!data.success) alert(data.message)
-            else {
-                const symptomList = data.payload.filter((v,i,arr)=>arr.findIndex(e=>e.name===v.name)===i)
-                const symptomListPaged = this.initSymptomListPaged(symptomList)
-                this.setState({ symptomList, symptomListPaged })
-            }
-        })
+        
     }
 
     initSymptomListPaged = symptomList => {
@@ -40,6 +35,26 @@ class ExpertScreen extends Component {
                 return rr
             }
         }, [])
+    }
+
+    handleChangeText = data => {
+        this.setState(data)
+    }
+
+    handleSetChildAge = () => {
+        if(this.state.childAge.length>0) {
+            this.setState({ childAgeAdded: true }, () => {
+                fetchSymptomList(this.state.childAge, (error, data) => {
+                    if (error) alert(error)
+                    else if (!data.success) alert(data.message)
+                    else {
+                        const symptomList = data.payload.filter((v,i,arr)=>arr.findIndex(e=>e.name===v.name)===i)
+                        const symptomListPaged = this.initSymptomListPaged(symptomList)
+                        this.setState({ symptomList, symptomListPaged })
+                    }
+                })
+            })
+        }
     }
 
     render() {
@@ -64,7 +79,7 @@ class ExpertScreen extends Component {
                         expertResult === null
                             ? <Text style={{ fontSize: 20, color: Color.background, fontWeight: "bold" }}>Everything is okay.</Text>
                             : <View style={{ alignItems: "center" }}>
-                                <Text style={{ paddingVertical: 8, fontSize: 20, color: Color.tabTextSelected, fontWeight: "bold" }}>{expertResult.name} stage {expertResult.stage}</Text>
+                                <Text style={{ paddingVertical: 8, fontSize: 20, color: Color.tabTextSelected, fontWeight: "bold" }}>{expertResult.name}</Text>
                                 {
                                     expertResult.emergency
                                         ? <View style={{ paddingVertical: 24, paddingHorizontal: 8 }}>
@@ -81,7 +96,27 @@ class ExpertScreen extends Component {
     }
 
     _renderSymptomChooser = () => {
-        const { currentPage, symptomListPaged } = this.state
+        const { currentPage, symptomListPaged, childAge, childAgeAdded } = this.state
+        if(!childAgeAdded) {
+            return (
+                <View style={{ flex: 1, justifyContent: "center", alignItems: "center", padding: 16 }}>
+                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, padding: 8 }}>Enter child's age</Text>
+                    <Picker
+                        selectedValue={this.state.language}
+                        style={{height: 50, width: "100%", fontSize: 22 }}
+                        onValueChange={(itemValue, itemIndex) =>this.handleChangeText({ childAge: itemValue })}>
+                        <Picker.Item label="1 to 28 days" value="1_to_28_days" />
+                        <Picker.Item label="1 to 12 months" value="1_to_12_months" />
+                        <Picker.Item label="1 to 3 years" value="1_to_3_years" />
+                        <Picker.Item label="3 to 12 years" value="3_to_12_years" />    
+                    </Picker>
+                    <View style={{ width: "100%", paddingVertical: 16 }}>
+                        <Button title="OKAY" onPress={this.handleSetChildAge} />
+                    </View>
+                </View>
+            )
+        }
+        else if(symptomListPaged.length===0) return null;
         return (
             <View style={styles.body}>
                 {/* <StatusBar barStyle="light-content" /> */}
@@ -122,6 +157,7 @@ class ExpertScreen extends Component {
         if (this.state.symptomListPaged.length === 0) return null
         const currentPageOfSymptoms = this.state.symptomListPaged[this.state.currentPage]
         return currentPageOfSymptoms.map((symptom, i) => {
+        // <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter username" value={childAge} onChangeText={text => this.handleChangeText({ childAge: text })} />
             return (
                 <View key={i} style={{ paddingBottom: i === currentPageOfSymptoms.length - 1 ? 56 : 0 }}>
                     {i > 0 && <View style={styles.divider} />}
@@ -163,7 +199,7 @@ class ExpertScreen extends Component {
             return [...rr, ...symptoms]
         }, [])
         if (symptomListSubmitted.length > 0) {
-            fetchExpertSystem({ symptoms: symptomListSubmitted }, (error, data) => {
+            fetchExpertSystem(this.state.childAge, { symptoms: symptomListSubmitted }, (error, data) => {
                 if (error) alert(error)
                 else if (!data.success) alert(data.message)
                 else {

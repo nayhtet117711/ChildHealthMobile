@@ -1,18 +1,18 @@
-const BASE_URL = "http://192.168.43.123:3333"
+const BASE_URL = "http://10.0.2.2:3333"
 const SYMPTOM_LIST = BASE_URL+"/symptoms"
 const EXPERT_SYSTEM = BASE_URL+"/experts"
 const SIGNUP = BASE_URL+"/accounts/register"
 const LOGIN = BASE_URL+"/accounts/login"
 
-const fetchSymptomList = (callback) => { 
-    fetch(SYMPTOM_LIST)
+const fetchSymptomList = (childAge, callback) => { 
+    fetch(`${SYMPTOM_LIST}?childAge=${childAge}`)
     .then(res => res.json())
     .then(data => callback(null, data))
     .catch(error => callback(error, null))
 }
 
-const fetchExpertSystem = ({ symptoms }, callback) => {
-    fetch(EXPERT_SYSTEM, {
+const fetchExpertSystem = (childAge, { symptoms }, callback) => {
+    fetch(`${EXPERT_SYSTEM}?childAge=${childAge}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -56,16 +56,16 @@ class SignupScreen extends Component {
                         <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter username" value={username} onChangeText={text => this.handleChangeText({ username: text })} />
 
                         <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Name</Text>
-                        <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter username" value={name} onChangeText={text => this.handleChangeText({ name: text })} />
+                        <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter your name" value={name} onChangeText={text => this.handleChangeText({ name: text })} />
 
                         <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Phone</Text>
-                        <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter username" value={phone} onChangeText={text => this.handleChangeText({ phone: text })} />
+                        <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter phone number" value={phone} onChangeText={text => this.handleChangeText({ phone: text })} />
 
                         <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Password</Text>
                         <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter password" value={password} onChangeText={text => this.handleChangeText({ password: text })} secureTextEntry={true} />
 
                         <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Confirm Password</Text>
-                        <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter password" value={repassword} onChangeText={text => this.handleChangeText({ repassword: text })} secureTextEntry={true} />
+                        <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Re-enter password" value={repassword} onChangeText={text => this.handleChangeText({ repassword: text })} secureTextEntry={true} />
 
                         <View style={{ width: "100%" }}>
                             <Button title="SIGNUP" onPress={this.handleSignup} />

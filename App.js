@@ -13,16 +13,16 @@ import * as Color from "./src/config.colors"
 
 const TabScreens = createBottomTabNavigator(
   {
+    Account: {
+      screen: AccountScreen,
+      navigationOptions: ({ navigation }) => ({
+        title: "Me",
+      }),
+    },
     Hospital: {
       screen: HospitalScreen,
       navigationOptions: ({ navigation }) => ({
         title: "Hospitals",
-      }),
-    },
-    Bmi: {
-      screen: BmiScreen,
-      navigationOptions: ({ navigation }) => ({
-        title: "BMI",
       }),
     },
     Expert: {
@@ -31,10 +31,10 @@ const TabScreens = createBottomTabNavigator(
         title: "Expert",
       }),
     },
-    Account: {
-      screen: AccountScreen,
+    Bmi: {
+      screen: BmiScreen,
       navigationOptions: ({ navigation }) => ({
-        title: "Me",
+        title: "BMI",
       }),
     },
   },
@@ -51,6 +51,7 @@ const TabScreens = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
+      
       activeTintColor: Color.tabTextSelected,
       inactiveTintColor: Color.tabText,
       labelStyle: {

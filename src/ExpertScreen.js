@@ -100,10 +100,10 @@ class ExpertScreen extends Component {
         if(!childAgeAdded) {
             return (
                 <View style={{ flex: 1, justifyContent: "center", alignItems: "center", padding: 16 }}>
-                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, padding: 8 }}>Enter child's age</Text>
+                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, padding: 16 }}>Select child's age</Text>
                     <Picker
-                        selectedValue={this.state.language}
-                        style={{height: 50, width: "100%", fontSize: 22 }}
+                        selectedValue={childAge}
+                        style={{height: 50, width: "100%", fontSize: 22, backgroundColor: Color.listDivider }}
                         onValueChange={(itemValue, itemIndex) =>this.handleChangeText({ childAge: itemValue })}>
                         <Picker.Item label="1 to 28 days" value="1_to_28_days" />
                         <Picker.Item label="1 to 12 months" value="1_to_12_months" />
@@ -111,7 +111,13 @@ class ExpertScreen extends Component {
                         <Picker.Item label="3 to 12 years" value="3_to_12_years" />    
                     </Picker>
                     <View style={{ width: "100%", paddingVertical: 16 }}>
-                        <Button title="OKAY" onPress={this.handleSetChildAge} />
+                        <TouchableNativeFeedback onPress={this.handleSetChildAge} >
+                            <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: Color.inputBorder, borderRadius: 8}}>
+                                {/* <Icon name="logout" color={Color.tabBackground} size={30} style={{ paddingHorizontal: 8}} /> */}
+                                <Text style={{ fontSize: 18, color: Color.bodyText, color: Color.tabBackground, paddingHorizontal: 8 }}>OKAY</Text>
+                            </View>
+                        </TouchableNativeFeedback>
+                        {/* <Button title="OKAY" onPress={this.handleSetChildAge} /> */}
                     </View>
                 </View>
             )
@@ -120,6 +126,12 @@ class ExpertScreen extends Component {
         return (
             <View style={styles.body}>
                 {/* <StatusBar barStyle="light-content" /> */}
+                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingVertical: 10, backgroundColor: Color.listDivider }}>
+                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary }}>Selected child's age:</Text>
+                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => this.setState({ childAgeAdded: false })}  >
+                        <Text style={{ fontSize: 18, color: Color.inputBorder, borderWidth: 1, borderColor: Color.inputBorder, borderRadius: 8, paddingVertical: 4, paddingHorizontal: 16 }}>{ childAge }</Text>
+                    </TouchableNativeFeedback>
+                </View>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 8, paddingVertical: 8, borderBottomColor: Color.listDivider, elevation: 1 }}>
                     {currentPage > 0
                         ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageBack} >

@@ -21,7 +21,7 @@ class LoginScreen extends Component {
         else {
             fetchLogin(this.state, async (err, data) => {
                 if(err) alert(err)
-                else if(!data.success) alert(SON.stringify(data.message)) 
+                else if(!data.success) alert(JSON.stringify(data.message)) 
                 else {
                     await AsyncStorage.setItem('user', JSON.stringify(data.payload.userAccount));
                     this.props.navigation.navigate('AuthLoading');

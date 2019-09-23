@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { View, Text, TextInput, Button, AsyncStorage } from 'react-native'
+import Icon from "react-native-vector-icons/dist/FontAwesome5"
+import { View, Text, TextInput, Button, AsyncStorage, TouchableNativeFeedback, StatusBar } from 'react-native'
 import styles from "./styles"
 import * as Color from "./config.colors"
 import {  fetchLogin } from "./api"
@@ -50,22 +51,55 @@ class LoginScreen extends Component {
         const { username, password } = this.state
         return(
             <View style={styles.body}>
-                <View style={{ flex: 2, justifyContent: "center", alignItems: "center", backgroundColor: "#e5efef" }}>
-                    <Text style={{ fontSize: 24, color: Color.bodyTextSecondary }}>Login to your Account</Text>
+                <StatusBar backgroundColor="#2E86C1" barStyle="light-content" />
+                <View style={{ flex: 2, justifyContent: "center", alignItems: "center", backgroundColor: "#2E86C1" }}>
+                    <Icon name="check-circle" size={60} color={"#e5e5f5"} style={{ paddingVertical: 16 }} />
+                    <Text style={{ fontSize: 26, color: "white" }}>Login to your Account</Text>
                 </View>
-                <View style={{ flex: 4, justifyContent: "center", alignItems: "center", padding: 17, }}>
-                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Username</Text>
-                    <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter username" value={username} onChangeText={text => this.handleChangeText({ username: text })} />
+                <View style={{ flex: 4, justifyContent: "center", alignItems: "center", padding: 17, backgroundColor: "#45B39D"}}>
+                    {/* <Text style={{ fontSize: 22, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Username</Text> */}
+                    <TextInput style={{ 
+                        backgroundColor: "#ffffffaa",
+                        borderColor: "white",
+                        height: 50, 
+                        borderWidth: 1, 
+                        width: "100%", 
+                        fontSize: 20, 
+                        paddingVertical: 8, 
+                        paddingHorizontal: 16, 
+                        marginBottom: 18, 
+                        borderRadius: 24 }} 
+                        placeholder="Enter username" 
+                        value={username} 
+                        onChangeText={text => this.handleChangeText({ username: text })} />
                     
-                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Password</Text>
-                    <TextInput style={{ height: 40, borderWidth: 1, borderColor: "lightgray", width: "100%", fontSize: 16, padding: 8, marginBottom: 16 }} placeholder="Enter password" value={password} onChangeText={text => this.handleChangeText({ password: text })} secureTextEntry={true} />
+                    {/* <Text style={{ fontSize: 2, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Password</Text> */}
+                    <TextInput style={{ 
+                        backgroundColor: "#ffffffaa",
+                        borderColor: "white",
+                        height: 50, 
+                        borderWidth: 1,
+                        width: "100%", 
+                        fontSize: 20, 
+                        paddingVertical: 8, 
+                        paddingHorizontal: 16, 
+                        marginBottom: 18, 
+                        borderRadius: 24 }} 
+                        placeholder="Enter password" 
+                        value={password} 
+                        onChangeText={text => this.handleChangeText({ password: text })} 
+                        secureTextEntry={true} />
                     
                     <View style={{ width: "100%" }}>
-                        <Button title="LOGIN" onPress={this.handleLogin} />
+                        <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.handleLogin} >
+                            <Text style={{ padding: 10, textAlign: "center", fontSize: 20, backgroundColor: "#2E86C1", borderRadius: 20, color: "white" }}>LOGIN</Text>
+                        </TouchableNativeFeedback>
                     </View>
 
                     <View style={{ width: "100%", marginTop: 16 }}>
-                        <Button title="Don't have accout, create here." onPress={this.handleGoSignup} color="green"  style={{ border: null, backgroundColor: "white" }} />
+                        <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.handleGoSignup} >
+                            <Text style={{ padding: 10, textAlign: "center", fontSize: 18, borderRadius: 20, color: "#f5f5f5", textDecorationLine: "underline" }}>Don't have accout, create here.</Text>
+                        </TouchableNativeFeedback>
                     </View>
 
                 </View>

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker } from 'react-native'
+import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker, StatusBar } from 'react-native'
 import Icon from "react-native-vector-icons/dist/FontAwesome5"
 import Dialog from "react-native-dialog";
 import styles from "./styles"
@@ -69,17 +69,18 @@ class ExpertScreen extends Component {
         const { expertResult } = this.state
         return (
             <View style={styles.body}>
-                <View style={{ flexDirection: "row", padding: 8, elevation: 1 }}>
+                <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
+                <View style={{ flexDirection: "row", paddingVertical: 8, paddingHorizontal:16, elevation: 1, backgroundColor: "#0E6655" }}>
                     <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onBackFromExpertResult} >
-                        <Icon.Button name="arrow-left" size={16} color={Color.bodyBackground}>Back</Icon.Button>
+                        <Icon name="arrow-left" size={22} color={Color.bodyBackground} />
                     </TouchableNativeFeedback>
                 </View>
-                <View style={{ flex: 1, padding: 8, justifyContent: "center", alignItems: "center" }}>
+                <View style={{ flex: 1, padding: 8, backgroundColor: "#0E6655" }}>
                     {
                         expertResult === null
-                            ? <Text style={{ fontSize: 20, color: Color.background, fontWeight: "bold" }}>Everything is okay.</Text>
-                            : <View style={{ alignItems: "center" }}>
-                                <Text style={{ paddingVertical: 8, fontSize: 20, color: Color.tabTextSelected, fontWeight: "bold" }}>{expertResult.name}</Text>
+                            ? <Text style={{ fontSize: 24, color: "white", fontWeight: "bold" }}>Everything is okay.</Text>
+                            : <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+                                <Text style={{ padding: 8, fontSize: 24, color: "white", fontWeight: "bold" }}>{expertResult.name}</Text>
                                 {
                                     expertResult.emergency
                                         ? <View style={{ paddingVertical: 24, paddingHorizontal: 8 }}>
@@ -91,6 +92,14 @@ class ExpertScreen extends Component {
                             </View>
                     }
                 </View>
+                <View style={{ flex: 4, padding: 8, flexDirection: "column", backgroundColor: "#f5f9fa", borderTopWidth: 1, borderTopColor: "#0E6655" }}>
+                    <Text style={{ fontSize: 18, color: "gray", paddingVertical: 8 }}>The following symptoms </Text>
+                    {
+                        expertResult.fact.map( (v, k) => (
+                            <Text key={k} style={{ fontSize: 20, color: Color.bodyText, fontWeight: "bold", padding: 8 }}>{k+1}.&nbsp;{v.name}</Text>
+                        ))
+                    }
+                </View>
             </View>
         )
     }
@@ -100,21 +109,24 @@ class ExpertScreen extends Component {
         if(!childAgeAdded) {
             return (
                 <View style={{ flex: 1, justifyContent: "center", alignItems: "center", padding: 16 }}>
+                    <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
                     <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, padding: 16 }}>Select child's age</Text>
-                    <Picker
-                        selectedValue={childAge}
-                        style={{height: 50, width: "100%", fontSize: 22, backgroundColor: Color.listDivider }}
-                        onValueChange={(itemValue, itemIndex) =>this.handleChangeText({ childAge: itemValue })}>
-                        <Picker.Item label="1 to 28 days" value="1_to_28_days" />
-                        <Picker.Item label="1 to 12 months" value="1_to_12_months" />
-                        <Picker.Item label="1 to 3 years" value="1_to_3_years" />
-                        <Picker.Item label="3 to 12 years" value="3_to_12_years" />    
-                    </Picker>
+                    <View style={{height: 50, width: "100%", backgroundColor: "#5DADE2", borderRadius: 22 }}>
+                        <Picker
+                            selectedValue={childAge}
+                            style={{ fontSize: 22 }}
+                            onValueChange={(itemValue, itemIndex) =>this.handleChangeText({ childAge: itemValue })}>
+                            <Picker.Item label="1 to 28 days" value="1_to_28_days" />
+                            <Picker.Item label="1 to 12 months" value="1_to_12_months" />
+                            <Picker.Item label="1 to 3 years" value="1_to_3_years" />
+                            <Picker.Item label="3 to 12 years" value="3_to_12_years" />    
+                        </Picker>
+                    </View>
                     <View style={{ width: "100%", paddingVertical: 16 }}>
                         <TouchableNativeFeedback onPress={this.handleSetChildAge} >
-                            <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: Color.inputBorder, borderRadius: 8}}>
+                            <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: Color.inputBorder, borderRadius: 22}}>
                                 {/* <Icon name="logout" color={Color.tabBackground} size={30} style={{ paddingHorizontal: 8}} /> */}
-                                <Text style={{ fontSize: 18, color: Color.bodyText, color: Color.tabBackground, paddingHorizontal: 8 }}>OKAY</Text>
+                                <Text style={{ fontSize: 18, color: Color.bodyText, color: Color.tabBackground, paddingHorizontal: 8, }}>OKAY</Text>
                             </View>
                         </TouchableNativeFeedback>
                         {/* <Button title="OKAY" onPress={this.handleSetChildAge} /> */}
@@ -126,31 +138,31 @@ class ExpertScreen extends Component {
         return (
             <View style={styles.body}>
                 {/* <StatusBar barStyle="light-content" /> */}
-                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingVertical: 10, backgroundColor: Color.listDivider }}>
-                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary }}>Selected child's age:</Text>
+                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingVertical: 10, backgroundColor: "#0E6655" }}>
+                    <Text style={{ fontSize: 18, color: "white" }}>Selected child's age:</Text>
                     <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => this.setState({ childAgeAdded: false })}  >
-                        <Text style={{ fontSize: 18, color: Color.inputBorder, borderWidth: 1, borderColor: Color.inputBorder, borderRadius: 8, paddingVertical: 4, paddingHorizontal: 16 }}>{ childAge }</Text>
+                        <Text style={{ fontSize: 18, color: "#232323", borderWidth: 1, borderColor: "white", backgroundColor: "white", borderRadius: 8, paddingVertical: 4, paddingHorizontal: 16 }}>{ childAge }</Text>
                     </TouchableNativeFeedback>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 8, paddingVertical: 8, borderBottomColor: Color.listDivider, elevation: 1 }}>
+                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 8, paddingVertical: 8, borderBottomColor: Color.listDivider, elevation: 1, backgroundColor: "#0E6655" }}>
                     {currentPage > 0
                         ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageBack} >
-                            <Icon name="arrow-left" size={22} color={Color.bodyTextSecondary} />
+                            <Icon name="arrow-left" size={22} color={"#e5e5e5"} />
                         </TouchableNativeFeedback>
                         : <View />
                     }
                     <View style={{ flexDirection: "column", alignItems: "center" }}>
-                        <Text style={{ fontSize: 18, color: Color.bodyText, fontWeight: "700" }}>Symptoms</Text>
-                        <Text style={{ fontSize: 13, color: Color.bodyTextSecondary, paddingHorizontal: 4 }}>page-{currentPage + 1} of {symptomListPaged.length}</Text>
+                        <Text style={{ fontSize: 20, color: "white", fontWeight: "700" }}>Symptoms</Text>
+                        <Text style={{ fontSize: 16, color: "#e5e5e5", paddingHorizontal: 4 }}>page-{currentPage + 1} of {symptomListPaged.length}</Text>
                     </View>
                     {currentPage < symptomListPaged.length - 1
                         ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageNext} >
-                            <Icon name="arrow-right" size={22} color={Color.bodyTextSecondary} />
+                            <Icon name="arrow-right" size={22} color={"#e5e5e5"} />
                         </TouchableNativeFeedback>
                         : <View />
                     }
                 </View>
-                <ScrollView contentInsetAdjustmentBehavior="automatic">
+                <ScrollView contentInsetAdjustmentBehavior="automatic" >
                     <Text style={{ padding: 8, fontSize: 15, color: Color.bodyTextSecondary }}>Choose the symptom(s) of you kid below.</Text>
                     {this._renderSymptomInput()}
                 </ScrollView>
@@ -216,6 +228,7 @@ class ExpertScreen extends Component {
                 else if (!data.success) alert(data.message)
                 else {
                     const resultFromExpert = data.payload
+                    console.log(resultFromExpert)
                     this.setState({ isExpertResultView: true, expertResult: resultFromExpert.result })
                 }
             })

@@ -119,7 +119,7 @@ class ExpertScreen extends Component {
                             <Picker.Item label="1 to 28 days" value="1_to_28_days" />
                             <Picker.Item label="1 to 12 months" value="1_to_12_months" />
                             <Picker.Item label="1 to 3 years" value="1_to_3_years" />
-                            <Picker.Item label="3 to 12 years" value="3_to_12_years" />    
+                            <Picker.Item label="3 to 12 years" value="  " />    
                         </Picker>
                     </View>
                     <View style={{ width: "100%", paddingVertical: 16 }}>
@@ -228,8 +228,8 @@ class ExpertScreen extends Component {
                 else if (!data.success) alert(data.message)
                 else {
                     const resultFromExpert = data.payload
-                    console.log(resultFromExpert)
-                    this.setState({ isExpertResultView: true, expertResult: resultFromExpert.result })
+                    // console.log(resultFromExpert)
+                    // this.setState({ isExpertResultView: true, expertResult: resultFromExpert.result })
                 }
             })
         }

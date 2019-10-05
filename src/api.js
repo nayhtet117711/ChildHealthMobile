@@ -1,11 +1,34 @@
 const BASE_URL = "http://10.0.2.2:3333"
 const SYMPTOM_LIST = BASE_URL+"/symptoms"
+const DISEASE_LIST = BASE_URL+"/diseases"
 const EXPERT_SYSTEM = BASE_URL+"/experts"
 const SIGNUP = BASE_URL+"/accounts/register"
 const LOGIN = BASE_URL+"/accounts/login"
 
 const fetchSymptomList = (childAge, callback) => { 
     fetch(`${SYMPTOM_LIST}?childAge=${childAge}`)
+    .then(res => res.json())
+    .then(data => callback(null, data))
+    .catch(error => callback(error, null))
+}
+
+const fetchDiseaseList = (callback) => { 
+    fetch(`${DISEASE_LIST}`)
+    .then(res => res.json())
+    .then(data => callback(null, data))
+    .catch(error => callback(error, null))
+}
+
+const fetchSaveDisease = (data, callback) => { 
+    // console.log({ data })
+    alert(JSON.stringify(data))
+    fetch(`${DISEASE_LIST}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+    })
     .then(res => res.json())
     .then(data => callback(null, data))
     .catch(error => callback(error, null))
@@ -55,7 +78,9 @@ const fetchLogin = (user, callback) => {
 
 export {
     fetchSymptomList,
+    fetchDiseaseList,
     fetchExpertSystem,
     fetchSignup,
     fetchLogin,
+    fetchSaveDisease
 }

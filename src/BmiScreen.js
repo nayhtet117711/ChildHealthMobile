@@ -101,7 +101,7 @@ class BmiScreen extends Component {
                     </View>
 
                     <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", padding: 8, transform: [{ scaleX: 0.6 }] }}>
-                        <TouchableNativeFeedback style={{}} onPress={this.handleCalculate} >
+                        <TouchableNativeFeedback style={{}} onPress={this.handleCalculate} background={TouchableNativeFeedback.Ripple("white", false)}>
                             <View style={{ width: "100%", flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "#0E6655", height: 50, borderRadius: 50 }}>
                                 <Text style={{ fontSize: 20, color: "white", textAlign: "center" }}>Calculate</Text>
                                 <Icon name="check" size={22} color={"#e5e5f5"} style={{ paddingHorizontal: 16 }} />
@@ -122,7 +122,7 @@ class BmiScreen extends Component {
             <View style={{...styles.body}, {  }}>
                 {/* <ScrollView contentInsetAdjustmentBehavior="automatic" contentContainerStyle={{alignItems: 'center'}} style={{ width: "100%" }} > */}
                     <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "#0E6655", paddingHorizontal: 16 }}>
-                        <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.handleBack} >
+                        <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.handleBack} background={TouchableNativeFeedback.Ripple("white", false)}>
                             <Icon name="arrow-left" size={22} color={"#e5e5f5"} style={{ paddingVertical: 16 }} />
                         </TouchableNativeFeedback>
                         <Text style={{ flex: 1, fontSize: 24, color: "white", textAlign: "center" }}>Child's BMI Calculator</Text>

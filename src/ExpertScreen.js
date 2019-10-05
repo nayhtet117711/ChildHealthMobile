@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker, StatusBar } from 'react-native'
+import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker, StatusBar, ImageBackground } from 'react-native'
 import Icon from "react-native-vector-icons/dist/FontAwesome5"
 import Dialog from "react-native-dialog";
 import styles from "./styles"
@@ -71,7 +71,7 @@ class ExpertScreen extends Component {
             <View style={styles.body}>
                 <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
                 <View style={{ flexDirection: "row", paddingVertical: 8, paddingHorizontal:16, elevation: 1, backgroundColor: "#0E6655" }}>
-                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onBackFromExpertResult} >
+                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onBackFromExpertResult} background={TouchableNativeFeedback.Ripple(Color.bodyBackground, false)} >
                         <Icon name="arrow-left" size={22} color={Color.bodyBackground} />
                     </TouchableNativeFeedback>
                 </View>
@@ -80,7 +80,7 @@ class ExpertScreen extends Component {
                         expertResult === null
                             ? <Text style={{ fontSize: 24, color: "white", fontWeight: "bold" }}>Everything is okay.</Text>
                             : <View style={{ flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
-                                <Text style={{ padding: 8, fontSize: 24, color: "white", fontWeight: "bold" }}>{expertResult.name}</Text>
+                                <Text style={{ padding: 8, fontSize: 24, color: "white", fontWeight: "bold" }}>{ this.capitalize(expertResult.name) }</Text>
                                 {
                                     expertResult.emergency
                                         ? <View style={{ paddingVertical: 24, paddingHorizontal: 8 }}>
@@ -96,7 +96,7 @@ class ExpertScreen extends Component {
                     <Text style={{ fontSize: 18, color: "gray", paddingVertical: 8 }}>The following symptoms </Text>
                     {
                         expertResult.fact.map( (v, k) => (
-                            <Text key={k} style={{ fontSize: 20, color: Color.bodyText, fontWeight: "bold", padding: 8 }}>{k+1}.&nbsp;{v.name}</Text>
+                            <Text key={k} style={{ fontSize: 20, color: Color.bodyText, fontWeight: "bold", padding: 8 }}>{k+1}.&nbsp;{ this.capitalize(v.name) }</Text>
                         ))
                     }
                 </View>
@@ -108,10 +108,11 @@ class ExpertScreen extends Component {
         const { currentPage, symptomListPaged, childAge, childAgeAdded } = this.state
         if(!childAgeAdded) {
             return (
-                <View style={{ flex: 1, justifyContent: "center", alignItems: "center", padding: 16 }}>
+                <ImageBackground source={{ uri: "https://p7.hiclipart.com/preview/892/65/113/hospital-free-content-patient-clip-art-hopital-clipart.jpg" }} style={{ flex: 1, justifyContent: "center", alignItems: "center", padding: 16 }}>
                     <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
-                    <Text style={{ fontSize: 18, color: Color.bodyTextSecondary, padding: 16 }}>Select child's age</Text>
-                    <View style={{height: 50, width: "100%", backgroundColor: "#5DADE2", borderRadius: 22 }}>
+                
+                    <View style={{width: "100%", backgroundColor: "#f5f5fa", borderRadius: 22, borderWidth: 1, borderColor: "green", padding: 8  }}>
+                        <Text style={{ fontSize: 18, color: "#858585", fontWeight: "bold", paddingHorizontal: 8,  paddingVertical: 8, borderColor: "green", borderBottomWidth: 1 }}>Select child's age</Text>
                         <Picker
                             selectedValue={childAge}
                             style={{ fontSize: 22 }}
@@ -119,11 +120,11 @@ class ExpertScreen extends Component {
                             <Picker.Item label="1 to 28 days" value="1_to_28_days" />
                             <Picker.Item label="1 to 12 months" value="1_to_12_months" />
                             <Picker.Item label="1 to 3 years" value="1_to_3_years" />
-                            <Picker.Item label="3 to 12 years" value="  " />    
+                            <Picker.Item label="3 to 12 years" value="3_to_12_years" />    
                         </Picker>
                     </View>
                     <View style={{ width: "100%", paddingVertical: 16 }}>
-                        <TouchableNativeFeedback onPress={this.handleSetChildAge} >
+                        <TouchableNativeFeedback onPress={this.handleSetChildAge} background={TouchableNativeFeedback.Ripple("white", false)} >
                             <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: Color.inputBorder, borderRadius: 22}}>
                                 {/* <Icon name="logout" color={Color.tabBackground} size={30} style={{ paddingHorizontal: 8}} /> */}
                                 <Text style={{ fontSize: 18, color: Color.bodyText, color: Color.tabBackground, paddingHorizontal: 8, }}>OKAY</Text>
@@ -131,7 +132,7 @@ class ExpertScreen extends Component {
                         </TouchableNativeFeedback>
                         {/* <Button title="OKAY" onPress={this.handleSetChildAge} /> */}
                     </View>
-                </View>
+                </ImageBackground>
             )
         }
         else if(symptomListPaged.length===0) return null;
@@ -140,13 +141,13 @@ class ExpertScreen extends Component {
                 {/* <StatusBar barStyle="light-content" /> */}
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 16, paddingVertical: 10, backgroundColor: "#0E6655" }}>
                     <Text style={{ fontSize: 18, color: "white" }}>Selected child's age:</Text>
-                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => this.setState({ childAgeAdded: false })}  >
-                        <Text style={{ fontSize: 18, color: "#232323", borderWidth: 1, borderColor: "white", backgroundColor: "white", borderRadius: 8, paddingVertical: 4, paddingHorizontal: 16 }}>{ childAge }</Text>
+                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => this.setState({ childAgeAdded: false })} background={TouchableNativeFeedback.Ripple("green", false)} >
+                        <Text style={{ fontSize: 18, color: "#232323", borderWidth: 1, borderColor: "white", backgroundColor: "white", borderRadius: 8, paddingVertical: 4, paddingHorizontal: 16 }}>{ childAge.split("_").reduce((r,c)=> r+" "+c ,"") }</Text>
                     </TouchableNativeFeedback>
                 </View>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingHorizontal: 8, paddingVertical: 8, borderBottomColor: Color.listDivider, elevation: 1, backgroundColor: "#0E6655" }}>
                     {currentPage > 0
-                        ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageBack} >
+                        ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageBack} background={TouchableNativeFeedback.Ripple("white", false)} >
                             <Icon name="arrow-left" size={22} color={"#e5e5e5"} />
                         </TouchableNativeFeedback>
                         : <View />
@@ -156,7 +157,7 @@ class ExpertScreen extends Component {
                         <Text style={{ fontSize: 16, color: "#e5e5e5", paddingHorizontal: 4 }}>page-{currentPage + 1} of {symptomListPaged.length}</Text>
                     </View>
                     {currentPage < symptomListPaged.length - 1
-                        ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageNext} >
+                        ? <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.onPageNext} background={TouchableNativeFeedback.Ripple("white", false)}>
                             <Icon name="arrow-right" size={22} color={"#e5e5e5"} />
                         </TouchableNativeFeedback>
                         : <View />
@@ -167,7 +168,7 @@ class ExpertScreen extends Component {
                     {this._renderSymptomInput()}
                 </ScrollView>
                 <View style={{ position: "absolute", bottom: 14, left: "50%" }}>
-                    <TouchableNativeFeedback onPress={this.onSubmitToExpert} background={TouchableNativeFeedback.Ripple(Color.bodyBackground, false)} style={{ borderRadius: 20 }}>
+                    <TouchableNativeFeedback onPress={this.onSubmitToExpert} background={TouchableNativeFeedback.Ripple(Color.bodyBackground, false)} style={{ borderRadius: 20, zIndex: 100 }}>
                         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", position: "relative", left: "-50%", elevation: 6, backgroundColor: Color.background, width: 50, height: 50, borderRadius: 25 }}>
                             <Icon name="check" size={24} color={Color.bodyBackground} />
                         </View>
@@ -185,9 +186,9 @@ class ExpertScreen extends Component {
             return (
                 <View key={i} style={{ paddingBottom: i === currentPageOfSymptoms.length - 1 ? 56 : 0 }}>
                     {i > 0 && <View style={styles.divider} />}
-                    <TouchableNativeFeedback onPress={()=>symptom.type==="boolean" && this.onInputChanged(!symptom.value, i, symptom.type)}>
+                    <TouchableNativeFeedback onPress={()=>symptom.type==="boolean" && this.onInputChanged(!symptom.value, i, symptom.type)} background={TouchableNativeFeedback.Ripple("white", false)}>
                         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", paddingVertical: 16, paddingHorizontal: 16, paddingRight: 8 }}>
-                            <Text style={{ flex: 8, fontSize: 16, color: Color.bodyText }}>{symptom.name}?</Text>
+                            <Text style={{ flex: 8, fontSize: 16, color: Color.bodyText }}>{ this.capitalize(symptom.name) }?</Text>
                             {
                                 symptom.type === "boolean"
                                     ? <CheckBox style={{ paddingHorizontal: 8, flex: 1 }} onValueChange={value => this.onInputChanged(value, i, symptom.type)} value={symptom.value} />
@@ -200,6 +201,10 @@ class ExpertScreen extends Component {
                 </View>
             )
         })
+    }
+
+    capitalize = text => {
+        return text.charAt(0).toUpperCase() + text.slice(1);
     }
 
     onInputChanged = (value, index, type) => {

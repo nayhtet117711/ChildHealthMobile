@@ -151,7 +151,7 @@ class AccountScreen extends Component {
                             </View>
                         </View>
                         <View style={{}}>
-                            <TouchableNativeFeedback onPress={() => null} >
+                            <TouchableNativeFeedback onPress={() => null} background={TouchableNativeFeedback.Ripple("#a5a5a5", false)}>
                                 <View style={{ padding: 16, paddingRight: 24, flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
                                     <Text style={{ fontSize: 22, color: Color.bodyText, fontWeight: "bold" }}>{user.phone}</Text>
                                     <View style={{ justifyContent: "center", alignItems: "center", width: 60, height: 60, borderColor: Color.listDivider, borderWidth: 1, borderRadius: 30, }}>
@@ -163,13 +163,13 @@ class AccountScreen extends Component {
                         </View>
                         <View style={{ padding: 16 }}>
                             {user.role === "admin" &&
-                                <TouchableNativeFeedback onPress={() => this.handleRuleAddScreen(true)} >
+                                <TouchableNativeFeedback onPress={() => this.handleRuleAddScreen(true)} background={TouchableNativeFeedback.Ripple("white", false)}>
                                     <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "#2874A6", borderRadius: 8, marginVertical: 8, borderRadius: 22 }}>
                                         <Text style={{ fontSize: 20, color: Color.bodyText, color: "white", paddingHorizontal: 8 }}>Add Rule</Text>
                                     </View>
                                 </TouchableNativeFeedback>
                             }
-                            <TouchableNativeFeedback onPress={this.handleLogout} >
+                            <TouchableNativeFeedback onPress={this.handleLogout} background={TouchableNativeFeedback.Ripple("white", false)}>
                                 <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "#d5a543", borderRadius: 8, marginVertical: 8, borderRadius: 22 }}>
                                     <Text style={{ fontSize: 20, color: Color.bodyText, color: "white", paddingHorizontal: 8 }}>Logout</Text>
                                 </View>
@@ -190,7 +190,7 @@ const RuleAddedView = props => {
         <View style={{ ...styles.body, ...{ backgroundColor: "#d5d5e0" } }}>
             <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
             <View style={{ padding: 16, backgroundColor: "#0E6655", flexDirection: "row" }}>
-                <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => handleRuleAddScreen(false)} >
+                <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => handleRuleAddScreen(false)} background={TouchableNativeFeedback.Ripple("green", false)}>
                     <Icon2 name="arrow-left" size={22} color={"white"} />
                 </TouchableNativeFeedback>
                 <Text style={{ fontSize: 22, flex: 1, textAlign: "center", color: "white" }}>New Rule</Text>
@@ -244,7 +244,7 @@ const RuleAddedView = props => {
 
                 <View style={{ padding: 0 }} >
                     <CheckBox
-                        title='1_to_28_days'
+                        title='1 to 28 days'
                         checked={state.age1}
                         onPress={()=>handleChangeText({ age1 : !state.age1 })}
                         />
@@ -307,7 +307,7 @@ const RuleAddedView = props => {
                 </View>
 
                 <View style={{ marginHorizontal: 10, marginVertical: 20, borderRadius: 6, padding: 1, borderColor: "#a5a5a5", borderWidth: 1, backgroundColor: "#0E6655", borderRadius: 8, }}>
-                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={handleAddDisease} >
+                    <TouchableNativeFeedback style={{ padding: 4 }} onPress={handleAddDisease} background={TouchableNativeFeedback.Ripple("white", false)}>
                         <Text style={{ padding: 10, textAlign: "center", fontSize: 20, color: "white" }}>Add Rule</Text>
                     </TouchableNativeFeedback>
                 </View>

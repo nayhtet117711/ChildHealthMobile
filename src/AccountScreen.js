@@ -86,7 +86,16 @@ class AccountScreen extends Component {
                 else if (!data.success) alert(data.message)
                 else {
                     alert(data.message+"")
-                    this.setState({ diseaseName: "", newFactList: [], newRuleList: [], age1: false, age2: false, age3: false, age4: false, items: [] })
+                    this.setState({ diseaseName: "", newFactList: [], newRuleList: [], age1: false, age2: false, age3: false, age4: false, items: [] }, () => {
+                        fetchDiseaseList((error, data) => {
+                            if (error) console.log(error)
+                            else if (!data.success) alert(data.message)
+                            else {
+                                this.setState({ oitems: data.payload })
+                            }
+                        })
+                    })
+                    
                 }
             } )
             // console.log(this.state.diseaseName, childAge, this.state.newFactList)

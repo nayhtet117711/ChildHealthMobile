@@ -229,7 +229,7 @@ class ExpertScreen extends Component {
                 else {
                     const resultFromExpert = data.payload
                     // console.log(resultFromExpert)
-                    // this.setState({ isExpertResultView: true, expertResult: resultFromExpert.result })
+                    this.setState({ isExpertResultView: true, expertResult: resultFromExpert.result })
                 }
             })
         }

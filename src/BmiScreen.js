@@ -133,8 +133,8 @@ class BmiScreen extends Component {
                             <Image source={require("./bmi-chart-children-usa.png")} style={{ width: 420, height: 400}}/>
                         </View>
                         <View style={{ justifyContent: "center", padding: 10, height: 100 }}>
-                            <Text style={{ flex: 1, fontSize: 24, color: "#454554", textAlign: "center" }}>BMI : {bmi} Percentiles</Text>
-                            <Text style={{ flex: 1, fontSize: 26, color: "green", textAlign: "center" }}>{result}</Text>
+                            <Text style={{ flex: 1, fontSize: 24, color: "#454554", textAlign: "center" }}>BMI : {bmi.toFixed()} Percentiles</Text>
+                            <Text style={{ flex: 1, fontSize: 26, color: "green", textAlign: "center", fontWeight: "bold" }}>{result}</Text>
                         </View>
                     </View>
 

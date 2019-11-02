@@ -18,112 +18,112 @@ class HospitalScreen extends Component {
                     city: "Mandalay",
                     phones: ["0221041",],
                     address: "30 Street, between 74 and 77 Streets in Chanayethazan Township",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/mandalay-general-hospital.jpg")
                 },
                 {
                     name: "Mandalay Children Hospital",
                     city: "Mandalay",
                     phones: ["0224917"],
                     address: "Corner of 30 and 74 streets",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/mandalay-children-hospital.jpeg")
                 },
                 {
                     name: "City Hospital",
                     city: "Mandalay",
                     phones: ["09797008700"],
                     address: "Theikpan Street,between 65 and 66 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/city-hospital.jpeg")
                 },
                 {
                     name: "Pun Hlaing Siloam Hospital",
                     city: "Mandalay",
                     phones: ["09952207"],
                     address: "No.97, 73 Street,Between 31 and 32 Streets ,Chan Aye Tharzan Township,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/Pun-Hlaing-Siloam-hospital.png")
                 },
                 {
                     name: "Myat Thukha Hospital",
                     city: "Mandalay",
                     phones: ["09976636226"],
                     address: "30 Street,Between 70 and 71 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/myat-thukha-hospital.jpeg")
                 },
                 {
                     name: "Mandalar Hospital",
                     city: "Mandalay",
                     phones: ["09423343640"],
                     address: "33 Street,Between 68 and 69 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/mandalar-hospital.jpg")
                 },
                 {
                     name: "Nyein Hospital",
                     city: "Mandalay",
                     phones: ["024065460"],
                     address: "82 Street,Between 29 and 30 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/nyein-hospital.jpeg")
                 },
                 {
                     name: "Grand Mandalay Hospital",
                     city: "Mandalay",
                     phones: ["09404090701"],
                     address: "Corner of 30 and 74 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/grand-mandalay-hospital.jpeg")
                 },
                 {
                     name: "Royal Hospital",
                     city: "Mandalay",
                     phones: ["024033258"],
                     address: "31 Street,Between 69 and 70 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/royal-hospital.jpg")
                 },
                 {
                     name: "300 Bedded Teaching",
                     city: "Mandalay",
                     phones: ["0280959"],
                     address: "31 Street,Between Thazin and Ngu War streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/300-bedded-hospital.jpg")
                 },
                 {
                     name: "Thit Sar Yarzar Hospital",
                     city: "Mandalay",
                     phones: ["0233423"],
                     address: "29 Street,Between 76 and 77 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/thitsar-yarzar-hospital.png")
                 },
                 {
                     name: "Ingyin Phyu Specialist Hospital",
                     city: "Mandalay",
                     phones: ["024072289"],
                     address: "30 Street,Between 63 and 64 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/ingyin-phyu-specialist-hospital.jpg")
                 },
                 {
                     name: "Aye Thiri Hospital",
                     city: "Mandalay",
                     phones: ["0232764"],
                     address: "26 Street,Between 72 and 73 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/aye-thiri-hospital.jpeg")
                 },
                 {
                     name: "Pan Hlaing Hospital",
                     city: "Mandalay",
                     phones: ["0924069203"],
                     address: "No.97 , 73 Street,Between 31 and 32 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/Pun-Hlaing-Siloam-hospital.png")
                 },
                 {
                     name: "Royal Rose Hospital",
                     city: "Mandalay",
                     phones: ["024069487"],
                     address: "No.2 ,Between 76 and 77 streets,Between 31 and 32 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/royal-rose-hospital.jpeg")
                 },
                 {
                     name: "Chan Nyein Aung Hospital",
                     city: "Mandalay",
                     phones: ["09779991732"],
                     address: "74 Street,Between 27 and 28 streets,Mandalay",
-                    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvKTSduZckztjiCGCI3rGrL2dw7VhJZMjXMTz0hJviDg2WhG-jXw"
+                    uri: require("./hospital-img/chan-nyein-aung-hospital.jpg")
                 },
             ]
         }
@@ -209,7 +209,7 @@ class HospitalScreen extends Component {
                 <View style={styles.listItemContainer}>
                     {index > 0 && <View style={styles.divider} />}
                     <View style={[styles.listItem, { paddingLeft: 8 }]}>
-                        <Avatar rounded size="medium" source={{ uri: item.uri }} />
+                        <Avatar rounded size="medium" source={item.uri} />
                         <View style={{ flexGrow: 1, paddingLeft: 8 }}>
                             <Text style={{ fontSize: 16, color: Color.bodyText, fontWeight: "600" }}>{item.name}</Text>
                             <Text style={{ fontSize: 13, color: Color.bodyTextSecondary, fontWeight: "100" }}>{item.city}</Text>

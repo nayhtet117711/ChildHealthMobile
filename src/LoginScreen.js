@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Icon from "react-native-vector-icons/dist/FontAwesome5"
-import { View, Text, TextInput, Button, AsyncStorage, TouchableNativeFeedback, StatusBar } from 'react-native'
+import { View, Text, TextInput, Button, AsyncStorage, TouchableNativeFeedback, StatusBar, ImageBackground } from 'react-native'
 import styles from "./styles"
 import * as Color from "./config.colors"
 import {  fetchLogin } from "./api"
@@ -50,17 +50,17 @@ class LoginScreen extends Component {
 
         const { username, password } = this.state
         return(
-            <View style={styles.body}>
+            <ImageBackground source={require('./motherchild.png')} style={styles.body}>
                 <StatusBar backgroundColor="#2E86C1" barStyle="light-content" />
-                <View style={{ flex: 2, justifyContent: "center", alignItems: "center", backgroundColor: "#2E86C1" }}>
-                    <Icon name="check-circle" size={60} color={"#e5e5f5"} style={{ paddingVertical: 16 }} />
-                    <Text style={{ fontSize: 26, color: "white" }}>Login to your Account</Text>
+                <View style={{ flex: 2, justifyContent: "center", alignItems: "center", backgroundColor: "#e0e5ef", opacity: 0.8 }}>
+                    <Icon name="check-circle" size={60} color={"#0E66A1"} style={{ paddingVertical: 16 }} />
+                    <Text style={{ fontSize: 26, color: "#0E66A1", paddingVertical: 16  }}>Login to your Account</Text>
                 </View>
-                <View style={{ flex: 4, justifyContent: "center", alignItems: "center", padding: 17, backgroundColor: "#45B39D"}}>
+                <View style={{ flex: 4, justifyContent: "center", alignItems: "center", padding: 17, backgroundColor: "#e0e5ef"/*45B39D*/, opacity: 0.8 }}>
                     {/* <Text style={{ fontSize: 22, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Username</Text> */}
                     <TextInput style={{ 
-                        backgroundColor: "#ffffffaa",
-                        borderColor: "white",
+                        backgroundColor: "#ffffffcc",
+                        borderColor: "#0E66A1",
                         height: 50, 
                         borderWidth: 1, 
                         width: "100%", 
@@ -75,8 +75,8 @@ class LoginScreen extends Component {
                     
                     {/* <Text style={{ fontSize: 2, color: Color.bodyTextSecondary, marginVertical: 4, width: "100%" }}>Password</Text> */}
                     <TextInput style={{ 
-                        backgroundColor: "#ffffffaa",
-                        borderColor: "white",
+                        backgroundColor: "#ffffffcc",
+                        borderColor: "#0E66A1",
                         height: 50, 
                         borderWidth: 1,
                         width: "100%", 
@@ -92,18 +92,18 @@ class LoginScreen extends Component {
                     
                     <View style={{ width: "100%" }}>
                         <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.handleLogin} >
-                            <Text style={{ padding: 10, textAlign: "center", fontSize: 20, backgroundColor: "#2E86C1", borderRadius: 20, color: "white" }}>LOGIN</Text>
+                            <Text style={{ padding: 10, textAlign: "center", fontSize: 20, backgroundColor: "#1E76B1", borderRadius: 20, color: "white" }}>LOGIN</Text>
                         </TouchableNativeFeedback>
                     </View>
 
                     <View style={{ width: "100%", marginTop: 16 }}>
                         <TouchableNativeFeedback style={{ padding: 4 }} onPress={this.handleGoSignup} >
-                            <Text style={{ padding: 10, textAlign: "center", fontSize: 18, borderRadius: 20, color: "#f5f5f5", textDecorationLine: "underline" }}>Don't have accout, create here.</Text>
+                            <Text style={{ padding: 10, textAlign: "center", fontSize: 18, borderRadius: 20, color: "#0E66A1", textDecorationLine: "underline" }}>Don't have accout, create here.</Text>
                         </TouchableNativeFeedback>
                     </View>
 
                 </View>
-            </View>
+            </ImageBackground>
         )
     }
 }

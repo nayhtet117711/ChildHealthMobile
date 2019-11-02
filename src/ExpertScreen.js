@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker, StatusBar, ImageBackground } from 'react-native'
+import { View, Text, ScrollView, Button, TouchableNativeFeedback, TextInput, CheckBox, Picker, StatusBar, ImageBackground, AsyncStorage } from 'react-native'
 import Icon from "react-native-vector-icons/dist/FontAwesome5"
 import Dialog from "react-native-dialog";
 import styles from "./styles"
@@ -17,12 +17,14 @@ class ExpertScreen extends Component {
             currentPage: 0,
             expertResult: {},
             childAge: "1_to_28_days",
-            childAgeAdded: false
+            childAgeAdded: false,
+            user: {}
         }
     }
 
-    componentDidMount() {
-        
+    async componentDidMount() {
+        const user = await AsyncStorage.getItem('user')
+        this.setState({ user: JSON.parse(user) })
     }
 
     initSymptomListPaged = symptomList => {
@@ -215,6 +217,7 @@ class ExpertScreen extends Component {
     }
 
     onSubmitToExpert = () => {
+        const { user } = this.state
         const symptomListSubmitted = this.state.symptomListPaged.reduce((rr, cc) => {
             const symptoms = cc.reduce((r, c) => {
                 const value = c.type === "integer"
@@ -228,7 +231,7 @@ class ExpertScreen extends Component {
             return [...rr, ...symptoms]
         }, [])
         if (symptomListSubmitted.length > 0) {
-            fetchExpertSystem(this.state.childAge, { symptoms: symptomListSubmitted }, (error, data) => {
+            fetchExpertSystem(this.state.childAge, { symptoms: symptomListSubmitted, username: user.name }, (error, data) => {
                 if (error) alert(error)
                 else if (!data.success) alert(data.message)
                 else {

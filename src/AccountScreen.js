@@ -4,7 +4,7 @@ import { Avatar, Icon, CheckBox } from "react-native-elements"
 import Icon2 from "react-native-vector-icons/dist/FontAwesome5"
 import styles from "./styles"
 import * as Color from "./config.colors"
-import { fetchDiseaseList, fetchSaveDisease } from "./api"
+import { fetchDiseaseList, fetchSaveDisease, fetchRecords } from "./api"
 
 
 class AccountScreen extends Component {
@@ -13,12 +13,14 @@ class AccountScreen extends Component {
         this.state = {
             user: {},
             ruleAddedView: false,
+            recordView: false,
             diseaseName: "",
             newRuleList: [], 
             items: [],
             oitems: [],
             factName: "",
             newFactList: [],
+            recordList:[],
             
             age1: false,
             age2: false,
@@ -65,6 +67,17 @@ class AccountScreen extends Component {
 
     handleRuleAddScreen = (show) =>  {
         this.setState({ ruleAddedView: show })
+    }
+
+    handleRecordScreen = (show) => {
+        fetchRecords(this.state.user.name, (error, data) => {
+            if (error) console.log(error)
+            else if (!data.success) alert(data.message)
+            else {
+                // console.log(data.payload)
+                this.setState({ recordView: show, recordList: data.payload })
+            }
+        })
     }
 
     handleAddDisease = () => {
@@ -121,9 +134,16 @@ class AccountScreen extends Component {
     render() {
         console.disableYellowBox = true;
 
-        const { user, ruleAddedView, items } = this.state
-
-        if (ruleAddedView === true) {
+        const { user, ruleAddedView, items, recordView } = this.state
+            
+        if (recordView === true) {
+            return (
+                <RecordView 
+                    state={this.state}
+                    handleRecordScreen={this.handleRecordScreen} />
+            )
+        }
+        else if (ruleAddedView === true) {
             return (
                 <RuleAddedView 
                     handleRuleAddScreen={this.handleRuleAddScreen} 
@@ -140,7 +160,7 @@ class AccountScreen extends Component {
                     <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
                     <ScrollView contentInsetAdjustmentBehavior="automatic">
                         <View style={{ borderBottomColor: Color.listDivider, borderBottomWidth: 1 }}>
-                            <Image resizeMode="cover" style={{ width: "100%", height: 340 }} source={{ uri: this.imageUri }} />
+                            <Image resizeMode="cover" style={{ width: "100%", height: 260 }} source={{ uri: this.imageUri }} />
                             <View style={{ position: "absolute", top: 0, bottom: 0, left: 0, right: 0, backgroundColor: "#247554dd" }} />
                             <View style={{ position: "absolute", bottom: 120, left: 0, right: 0, justifyContent: "center", flexDirection: "row", alignItems: "center" }}>
                                 <Avatar rounded size="large" source={{ uri: this.userImageUri }} />
@@ -169,6 +189,12 @@ class AccountScreen extends Component {
                                     </View>
                                 </TouchableNativeFeedback>
                             }
+                            <TouchableNativeFeedback onPress={() => this.handleRecordScreen(true)} background={TouchableNativeFeedback.Ripple("white", false)}>
+                                <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "#247554dd", borderRadius: 8, marginVertical: 8, borderRadius: 22 }}>
+                                    <Text style={{ fontSize: 20, color: Color.bodyText, color: "white", paddingHorizontal: 8 }}>Records</Text>
+                                </View>
+                            </TouchableNativeFeedback>
+                            
                             <TouchableNativeFeedback onPress={this.handleLogout} background={TouchableNativeFeedback.Ripple("white", false)}>
                                 <View style={{ padding: 12, flexDirection: "row", justifyContent: "center", alignItems: "center", backgroundColor: "#d5a543", borderRadius: 8, marginVertical: 8, borderRadius: 22 }}>
                                     <Text style={{ fontSize: 20, color: Color.bodyText, color: "white", paddingHorizontal: 8 }}>Logout</Text>
@@ -182,6 +208,47 @@ class AccountScreen extends Component {
         }
     }
 
+}
+
+const RecordView = props => {
+    const { state,  handleRecordScreen } = props
+    return (
+        <View style={{ ...styles.body, ...{ backgroundColor: "#d5d5e0" } }}>
+            <StatusBar backgroundColor="#0E6655" barStyle="light-content" />
+            <View style={{ padding: 16, backgroundColor: "#0E6655", flexDirection: "row" }}>
+                <TouchableNativeFeedback style={{ padding: 4 }} onPress={() => handleRecordScreen(false)} background={TouchableNativeFeedback.Ripple("green", false)}>
+                    <Icon2 name="arrow-left" size={22} color={"white"} />
+                </TouchableNativeFeedback>
+                <Text style={{ fontSize: 22, flex: 1, textAlign: "center", color: "white" }}>Records</Text>
+            </View>
+
+            <ScrollView contentInsetAdjustmentBehavior="automatic">
+                <View style={{ flex: 1, flexDirection: "column", paddingVertical: 4 }}>
+                    { state.recordList.length===0 && (
+                        <View style={{  flexDirection: "row", paddingVertical: 24, justifyContent: "center" }}>
+                        <Text style={{ fontSize: 20, fontWeight: "bold", color: "#777777" }}>There is no records.</Text>
+                        </View>
+                    )}
+                    {
+                        state.recordList.map( (v,k) => {
+                            return (
+                                <TouchableNativeFeedback onPress={() => null} background={TouchableNativeFeedback.Ripple("lightgray", false)}>
+                                    <View key={k} style={{ backgroundColor: "white", marginVertical: 1, flexDirection: "column", padding: 8 }}>
+                                        <Text style={{ fontSize: 20, fontWeight: "bold", color: "#333333" }}>{ v.disease }</Text>
+                                        <View style={{ flexDirection: "row", paddingVertical: 4, justifyContent: "space-between" }}>
+                                            <Text style={{ fontSize: 18, color: "#333333" }}>{ v.childage.split("_").reduce((r,c)=> r+" "+c ,"")}</Text>
+                                            <Text style={{ fontSize: 18, color: "#555555" }}>{ v.datee }</Text>
+                                        </View>
+                                    </View>
+                                </TouchableNativeFeedback>
+                            )
+                        })
+                    }
+                </View>
+            </ScrollView>
+
+        </View>
+    )
 }
 
 const RuleAddedView = props => {
